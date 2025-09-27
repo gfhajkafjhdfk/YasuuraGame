@@ -6,9 +6,43 @@
   <title>クイズ2</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  
   <body>
-    
+    <div class="container">
+  <h1>問題</h1>
+  <p class="q1">問題文</p>
+
+  <input type="text" id="answer" placeholder="ここに入力">
+  <button onclick="checkAnswer()" id="btn">答える</button>
+  <p id="result"></p>
+
+  <!-- 正解後に表示されるエリア -->
+  <div id="extra" class="hidden-content">
+    <a href="Akamon.html" id="nextBtn">メッセージ</a>
+
+     <div class="map-container">
+      
+    </div>
+  </div>
+</div>
+
+<script>
+  function checkAnswer() {
+    const input = document.getElementById("answer").value.trim();
+    const result = document.getElementById("result");
+    const extra = document.getElementById("extra");
+
+    // 正解候補
+    const correctAnswers = ["", ""];
+
+    if (correctAnswers.includes(input)) {
+      result.textContent = "正解！🎉";
+      extra.classList.add("show"); // 次のページボタン & 地図をフェードイン
+    } else {
+      result.textContent = "不正解…もう一度挑戦してね。";
+    }
+  }
+</script>
+
   </body>
   
 </html>
