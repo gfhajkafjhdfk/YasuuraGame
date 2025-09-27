@@ -1,95 +1,332 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>安浦町へようこそ！！</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Escape from Yasuura — Landing</title>
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-image: url("image_06.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        color: white;
-        text-align: center;
-        overflow: hidden;
-    }
+  :root{
+    --accent: rgba(255,235,205,0.95);
+    --glass: rgba(255,255,255,0.12);
+    --text-shadow: 0 6px 24px rgba(0,0,0,0.6);
+  }
 
-    /* フェードインアニメーション */
-    @keyframes fadeIn {
-        0% {opacity: 0; transform: translateY(-20px);}
-        100% {opacity: 1; transform: translateY(2);}
-    }
+  /* Basic reset */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+    color: #fff;
+    background: #111;
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
 
-    h1, h2 {
-        margin: 10px;
-        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-        animation: fadeIn 1.5s ease forwards;
-    }
+  /* Background image + moving overlay */
+  .stage{
+    position:relative;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background-image: url("image_06.jpg");
+    background-size: cover;
+    background-position: center;
+  }
 
-    h2 {
-        animation-delay: 0.5s;
-    }
+  /* Subtle parallax layer */
+  .bg-veneer{
+    pointer-events:none;
+    position:absolute;
+    inset:0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.55));
+    mix-blend-mode: multiply;
+    z-index:0;
+    transform:translateZ(0);
+  }
 
-    /* タイトルの揺れ */
-    @keyframes float {
-        0%, 100% {transform: translateY(0);}
-        50% {transform: translateY(-10px);}
-    }
+  /* Floating light blobs */
+  .light-blobs{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter: blur(36px);
+    opacity:0.18;
+    mix-blend-mode: screen;
+    animation: blobMove 14s linear infinite;
+  }
+  .blob.b1{width:380px;height:380px;background:rgba(255,180,120,0.12);left:-10%;top:10%;animation-duration:20s}
+  .blob.b2{width:260px;height:260px;background:rgba(120,200,255,0.10);right:-5%;top:30%;animation-duration:18s}
+  .blob.b3{width:480px;height:480px;background:rgba(200,120,255,0.08);left:35%;bottom:-10%;animation-duration:26s}
+  @keyframes blobMove{
+    0%{transform: translate(0,0) scale(1)}
+    50%{transform: translate(40px,-30px) scale(1.05)}
+    100%{transform: translate(0,0) scale(1)}
+  }
 
-    h1 {
-        animation: fadeIn 1.5s ease forwards, float 3s ease-in-out infinite;
-    }
+  /* Headings */
+  .logo-wrap{position:relative;z-index:3;padding:30px 20px}
+  h1{
+    font-size: clamp(24px, 4vw, 44px);
+    margin:0 0 6px;
+    letter-spacing:0.04em;
+    text-shadow: var(--text-shadow);
+    transform-origin:center;
+    opacity:0;
+    transform: translateY(-12px) scale(0.98);
+    transition: opacity .8s ease, transform .8s cubic-bezier(.2,.9,.3,1);
+  }
+  h2{
+    margin:0;
+    font-size: clamp(16px, 2.3vw, 20px);
+    opacity:0.95;
+    color: #f7f7f7;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.6);
+    transform-origin:center;
+    opacity:0;
+    transform: translateY(-6px);
+    transition: opacity .9s ease .2s, transform .9s cubic-bezier(.2,.9,.3,1) .2s;
+  }
 
-    /* ボタンアニメーション */
-    button {
-        margin-top: 20px;
-        padding: 12px 25px;
-        font-size: 18px;
-        border: none;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.8);
-        cursor: pointer;
-        transition: all 0.3s ease;
-        box-shadow: 0 0 10px rgba(255,255,255,0.5);
-        animation: fadeIn 2s ease forwards;
-        animation-delay: 1s;
-    }
+  /* Button */
+  .cta{
+    z-index:3;
+    margin-top:22px;
+    display:inline-block;
+    background: linear-gradient(90deg, rgba(255,255,255,0.92), rgba(245,245,245,0.86));
+    color:#111;
+    border:none;
+    padding:12px 26px;
+    border-radius:14px;
+    font-weight:600;
+    font-size:16px;
+    cursor:pointer;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+    transition: transform .18s ease, box-shadow .18s ease;
+    opacity:0;
+    transform: translateY(6px) scale(0.985);
+  }
+  .cta:active{transform:translateY(2px) scale(0.98)}
+  .cta:hover{transform:translateY(-4px) scale(1.02); box-shadow: 0 18px 44px rgba(0,0,0,0.55)}
 
-    button:hover {
-        background: rgba(255, 255, 255, 1);
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255,255,255,0.8);
-    }
+  /* visible state toggles (applied by JS on load) */
+  .ready h1, .ready h2, .ready .cta{
+    opacity:1; transform: translateY(0) scale(1);
+  }
 
-    /* 背景にゆらめく光のようなエフェクト */
-    .bg-overlay {
-        position: absolute;
-        top:0; left:0;
-        width:100%; height:100%;
-        background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-        animation: bgMove 10s linear infinite;
-        pointer-events: none;
-    }
+  /* Title overlay that will float up */
+  .title-overlay{
+    position:absolute;
+    inset:0;
+    z-index:5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    pointer-events:none;
+  }
 
-    @keyframes bgMove {
-        0% {transform: translate(0,0);}
-        50% {transform: translate(50px,50px);}
-        100% {transform: translate(0,0);}
-    }
+  .title-card{
+    background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.45));
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 44px;
+    border-radius: 20px;
+    box-shadow: 0 14px 56px rgba(0,0,0,0.6);
+    transform: translateY(30vh) scale(0.6) rotate(-2deg) perspective(800px);
+    opacity:0;
+    text-align:center;
+    backdrop-filter: blur(6px) saturate(1.1);
+  }
+  .title-card h3{
+    margin:0;
+    font-size: clamp(28px, 6vw, 56px);
+    letter-spacing:0.04em;
+    color: #fff;
+    text-shadow: 0 20px 60px rgba(0,0,0,0.7);
+  }
+  .title-card p{
+    margin-top:8px;
+    margin-bottom:0;
+    font-size:14px;
+    color: rgba(255,255,255,0.9);
+    opacity:0.9;
+  }
+
+  /* Title animation */
+  @keyframes titleRise {
+    0% { transform: translateY(30vh) scale(0.6) rotate(-2deg); opacity:0; filter:blur(8px) }
+    35% { transform: translateY(6vh) scale(0.92) rotate(-0.6deg); opacity:1; filter:blur(0px) }
+    70% { transform: translateY(0vh) scale(1.02) rotate(0deg); opacity:1 }
+    100% { transform: translateY(-18vh) scale(1.04); opacity:1 }
+  }
+
+  /* small sparkle dots that float up */
+  .spark-container{ position:absolute; inset:0; z-index:4; pointer-events:none; overflow:hidden; }
+  .spark{
+    position:absolute;
+    width:8px;height:8px;border-radius:50%;
+    background:linear-gradient(180deg,#fff, #ffd6a5);
+    box-shadow: 0 6px 18px rgba(255,220,180,0.9);
+    opacity:0;
+  }
+
+  /* Accessibility: respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce){
+    .blob, .cta, h1, h2 { animation:none !important; transition:none !important; transform:none !important; opacity:1 !important; }
+    .title-card{ transform:none !important; opacity:1 !important; }
+  }
 </style>
 </head>
 <body>
-    <div class="bg-overlay"></div>
-    <h1>安浦町へようこそ！！</h1>
-    <h2>県立大学駅からスタート！！</h2>
-    <button onclick="location.href='Kenritsu.html'">到着したらクリック！</button>
+  <main class="stage" id="stage" role="main" aria-labelledby="main-title">
+    <div class="bg-veneer" aria-hidden="true"></div>
+    <div class="light-blobs" aria-hidden="true">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+      <div class="blob b3"></div>
+    </div>
+
+    <div class="logo-wrap" role="region" aria-label="intro">
+      <h1 id="main-title">安浦町へようこそ！！</h1>
+      <h2 id="subtitle">県立大学駅からスタート！！</h2>
+      <button class="cta" id="startBtn" aria-label="Start tour">到着したらクリック！</button>
+    </div>
+
+    <!-- sparkles -->
+    <div class="spark-container" id="sparks" aria-hidden="true"></div>
+
+    <!-- floating title overlay (hidden initially) -->
+    <div class="title-overlay" id="overlay" aria-hidden="true">
+      <div class="title-card" id="titleCard" role="status" aria-live="polite">
+        <h3>Escape from Yasuura</h3>
+        <p>— Begin your journey —</p>
+      </div>
+    </div>
+  </main>
+
+<script>
+/*
+  Behavior:
+  - On DOMContentLoaded we reveal the intro (fade-in)
+  - When user clicks the start button:
+      1) create spark particles that float up
+      2) animate the overlay title with a dramatic "rise" (CSS animation)
+      3) after animation finishes, redirect to Kenritsu.html
+  - If user has prefers-reduced-motion, skip animations & redirect immediately
+*/
+
+(function(){
+  const stage = document.getElementById('stage');
+  const startBtn = document.getElementById('startBtn');
+  const overlay = document.getElementById('overlay');
+  const titleCard = document.getElementById('titleCard');
+  const sparks = document.getElementById('sparks');
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // show intro nicely
+  window.addEventListener('DOMContentLoaded', () => {
+    // small delay to let background paint
+    requestAnimationFrame(()=> {
+      stage.classList.add('ready');
+    });
+  });
+
+  // helper: create spark particles
+  function spawnSparks(count=18){
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const frag = document.createDocumentFragment();
+
+    for(let i=0;i<count;i++){
+      const s = document.createElement('div');
+      s.className='spark';
+      // start position: random around center-bottom area
+      const left = (w*0.25) + Math.random()*(w*0.5); // central band
+      const top  = (h*0.55) + Math.random()*(h*0.25);
+      s.style.left = left+'px';
+      s.style.top  = top+'px';
+      const size = 6 + Math.floor(Math.random()*12);
+      s.style.width = s.style.height = size+'px';
+      // random animation using JS (translate + fade)
+      frag.appendChild(s);
+
+      // schedule individual animation
+      (function(el, idx){
+        // randomize float duration and delay
+        const dur = 1600 + Math.random()*1100;
+        const delay = Math.random()*260;
+        setTimeout(()=>{
+          el.style.opacity = 1;
+          el.animate([
+            { transform: 'translateY(0) scale(1)', opacity: 1 },
+            { transform: 'translateY(-160px) scale(0.9)', opacity: 0.18 }
+          ], {
+            duration: dur,
+            easing: 'cubic-bezier(.2,.9,.2,1)',
+            iterations: 1,
+            fill:'forwards'
+          });
+        }, delay);
+      })(s, i);
+    }
+    sparks.appendChild(frag);
+
+    // cleanup after 3.5s
+    setTimeout(()=>{ sparks.innerHTML = ''; }, 4000);
+  }
+
+  // start sequence
+  startBtn.addEventListener('click', (e)=>{
+    if(prefersReduced){
+      // skip effects, immediately show overlay and redirect shortly
+      overlay.style.display='flex';
+      setTimeout(()=> location.href = 'Kenritsu.html', 600);
+      return;
+    }
+
+    // disable button
+    startBtn.disabled = true;
+    startBtn.style.cursor = 'wait';
+
+    // small press effect
+    startBtn.animate([{ transform:'scale(1)' },{ transform:'scale(0.96)' },{ transform:'scale(1.02)' }], { duration:380, easing:'ease-out' });
+
+    // spawn sparks
+    spawnSparks(22);
+
+    // reveal overlay and animate titleCard
+    overlay.setAttribute('aria-hidden','false');
+    titleCard.style.opacity = '1';
+    // trigger CSS animation by setting animation property
+    titleCard.style.animation = 'titleRise 2000ms cubic-bezier(.1,.9,.2,1) forwards';
+
+    // after a moment spawn another batch for drama
+    setTimeout(()=> spawnSparks(14), 400);
+
+    // redirect after animation finishes (set to 2400ms to be safe)
+    setTimeout(()=>{
+      // you can comment out the next line during testing if you don't want to navigate
+      location.href = 'Kenritsu.html';
+    }, 2400);
+  });
+
+  // accessibility: allow Enter/Space to activate
+  startBtn.addEventListener('keyup', (ev)=>{
+    if(ev.key === 'Enter' || ev.key === ' '){ startBtn.click(); }
+  });
+
+})();
+</script>
 </body>
 </html>
