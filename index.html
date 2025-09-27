@@ -11,4 +11,41 @@
     <h2>県立大学駅からスタート！！</h2>
     <button onclick="location.href='Kenritsu.html'">到着したらクリック！</button>
 </body>
+    <style>
+        
+ body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* 縦中央 */
+            align-items: center;     /* 横中央 */
+            background-image: url("image_06.jpg");
+            background-size: cover;   /* 画面いっぱいに表示 */
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; /* 文字を見やすく白に */
+            text-align: center;
+        }
+
+        h1, h2 {
+            margin: 10px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* 文字を読みやすく */
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+    </style>
 </html>
