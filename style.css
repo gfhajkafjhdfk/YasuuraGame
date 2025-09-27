@@ -83,3 +83,19 @@
       height: 100%;
       border: 0;
     }
+
+/* ▼ 地図と画像を縦に並べるためのコンテナ */
+.media-wrapper {
+  display: flex;
+  flex-direction: column; /* 要素を縦に並べる */
+  align-items: center;    /* 中央揃えにする */
+  gap: 20px;              /* 地図と画像の間に20pxの隙間を空ける */
+  margin-top: 20px;
+}
+
+/* ▼ 画像をレスポンシブ対応させる */
+.media-wrapper img {
+  max-width: 100%; /* 親要素の幅を超えないようにする */
+  height: auto;    /* 画像の縦横比を保つ */
+  border-radius: 12px; /* 地図の角丸と合わせる */
+}
