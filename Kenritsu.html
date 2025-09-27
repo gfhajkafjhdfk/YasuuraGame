@@ -7,23 +7,36 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>問題</h1>
-<p class="q1">京浜急行電鉄の県立大学駅のウェブサイトの「駅の概要」から、横須賀の中で色のある場所を探して、それを答えよ</p>
-    
-    <input type="text" id="answer" placeholder="ここに入力">
+<div class="container">
+  <h1>問題</h1>
+  <p class="q1">京浜急行電鉄の県立大学駅のウェブサイトの「駅の概要」から、横須賀の中で色のある場所を探して、それを答えよ</p>
+
+  <input type="text" id="answer" placeholder="ここに入力">
   <button onclick="checkAnswer()" id="btn">答える</button>
   <p id="result"></p>
+
+  <!-- 次のページへ進むボタン -->
+  <a href="nextpage.html" id="nextBtn">次のページへ</a>
+</div>
+    
   <script>
-    function checkAnswer() {
-      const input = document.getElementById("answer").value.trim();
-      const result = document.getElementById("result");
-      if (input === "赤門") {
-        result.textContent = "正解！🎉";
-      } else {
-        result.textContent = "不正解…もう一度挑戦してね。";
-      }
+  function checkAnswer() {
+    const input = document.getElementById("answer").value.trim();
+    const result = document.getElementById("result");
+    const nextBtn = document.getElementById("nextBtn");
+
+    // 正解候補を配列で管理
+    const correctAnswers = ["赤門", "あかもん"];
+
+    if (correctAnswers.includes(input)) {
+      result.textContent = "正解！🎉";
+      nextBtn.classList.add("show"); // フェードイン
+    } else {
+      result.textContent = "不正解…もう一度挑戦してね。";
     }
-  </script>
+  }
+</script>
+
     
 </body>
 </html>
