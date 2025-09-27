@@ -1,27 +1,59 @@
-@charset "UTF-8";
+  @charset "UTF-8";
 
-html {
-    font-size: 100%;
-}
-h2 {
-    margin: 30px 0 10px 0;
-}
+    html {
+      font-size: 100%;
+    }
 
-#btn {
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    width: 200px;
-    margin: 70px auto;
-    padding: 1rem 4rem;
-    font-weight: bold;
-    border: 2px solid #27acd9;
-    color: #27acd9;
-    border-radius: 100vh;
-    transition: 0.5s;
-}
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    #answer {
+      display: block;
+      margin: 20px auto;
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 200px;
+    }
+
+    #btn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      width: 200px;
+      margin: 30px auto;
+      padding: 1rem 4rem;
+      font-weight: bold;
+      border: 2px solid #27acd9;
+      color: #27acd9;
+      border-radius: 100vh;
+      transition: 0.5s;
+    }
     #btn:hover {
-        color: #fff;
-        background: #27acd9;
-}
+      color: #fff;
+      background: #27acd9;
+    }
 
+    /* ▼次のページボタン（最初は非表示） */
+    #nextBtn {
+      opacity: 0;
+      transform: translateY(50px);
+      pointer-events: none;
+      transition: opacity 1s ease, transform 1s ease;
+      margin: 40px auto;
+      display: inline-block;
+      padding: 1rem 3rem;
+      border: 2px solid #28a745;
+      color: #28a745;
+      border-radius: 100vh;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* 表示時のクラス */
+    #nextBtn.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
