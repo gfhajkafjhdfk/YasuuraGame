@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クイズ</title>
 </head>
 <body>
 <div class="container">
@@ -15,30 +14,34 @@
   <button onclick="checkAnswer()" id="btn">答える</button>
   <p id="result"></p>
 
-  <!-- 次のページへ進むボタン -->
-  <a href="nextpage.html" id="nextBtn">さあ、赤門へGO!</a>
+  <!-- 正解後に表示されるエリア -->
+  <div id="extra" class="hidden-content">
+    <a href="nextpage.html" id="nextBtn">さあ、赤門へGO!</a>
+
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.18405493687!2d139.67240917442945!3d35.272440152324045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60183ff209a7b1ef%3A0x22b4f7e4a52f6f7b!2z6LWk6ZaA!5e1!3m2!1sja!2sjp!4v1758949865138!5m2!1sja!2sjp" 
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
 </div>
 
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.18405493687!2d139.67240917442945!3d35.272440152324045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60183ff209a7b1ef%3A0x22b4f7e4a52f6f7b!2z6LWk6ZaA!5e1!3m2!1sja!2sjp!4v1758949865138!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" id="nextBtn"></iframe>
-    
-  <script>
+<script>
   function checkAnswer() {
     const input = document.getElementById("answer").value.trim();
     const result = document.getElementById("result");
-    const nextBtn = document.getElementById("nextBtn");
+    const extra = document.getElementById("extra");
 
-    // 正解候補を配列で管理
+    // 正解候補
     const correctAnswers = ["赤門", "あかもん"];
 
     if (correctAnswers.includes(input)) {
       result.textContent = "正解！🎉";
-      nextBtn.classList.add("show"); // フェードイン
+      extra.classList.add("show"); // 次のページボタン & 地図をフェードイン
     } else {
       result.textContent = "不正解…もう一度挑戦してね。";
     }
   }
 </script>
-
-    
 </body>
 </html>
