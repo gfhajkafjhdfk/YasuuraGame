@@ -65,6 +65,23 @@
       background: #28a745;
       color: #fff;
     }
+ #infoBtn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 2px solid #ff6347;
+    color: #ff6347;
+    border-radius: 100vh;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: 0.5s;
+  }
+  #infoBtn:hover {
+    background: #ff6347;
+    color: #fff;
+  }
+
 
     /* ▼レスポンシブ対応のGoogle Map */
     .map-container {
@@ -83,3 +100,35 @@
       height: 100%;
       border: 0;
     }
+
+ .info-bubble {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 500px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+    display: none; /* 初期非表示 */
+  }
+  .info-bubble.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .info-bubble::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 30px;
+    border: 10px solid transparent;
+    border-bottom: 20px solid #fff;
+  }
+  .info-img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
