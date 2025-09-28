@@ -34,7 +34,7 @@
   </div>
 
  <div id="infoBubble" class="info-bubble">
-      <img src="akamon.jpg" alt="赤門" class="info-img">
+      <img src="akamon2.jpg" alt="赤門" class="info-img">
       <p>
         赤門説明文
       </p>
@@ -91,6 +91,15 @@ body::before {
       result.textContent = "不正解…もう一度挑戦してね。";
     }
   }
+  
+   document.addEventListener("DOMContentLoaded", () => {
+    const infoBtn = document.getElementById("infoBtn");
+    const infoBubble = document.getElementById("infoBubble");
+
+    infoBtn.addEventListener("click", () => {
+      infoBubble.classList.toggle("show");
+    });
+  });
 </script>
 
   </body>
