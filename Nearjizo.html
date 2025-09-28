@@ -8,33 +8,12 @@
 </head>
   <body>
     <div class="container">
-  <div id="quiz1">
-      <h2>問題1</h2>
-      <p>地蔵尊付近のトンネルについて、標識が示す方角を答えよ</p>
-      <input type="text" id="answer1" placeholder="ここに入力">
-      <button onclick="checkAnswer(1)">答える</button>
-      <p id="result1" class="result"></p>
-      <button id="nextBtn1" class="hidden" onclick="showQuiz(2)">次へ</button>
-    </div>
+  <h1>問題1</h1>
+  <p class="q1">地蔵尊付近のトンネルについて、標識が示す方角を答えよ</p>
 
-    <!-- 問題2（最初は隠す） -->
-    <div id="quiz2" class="hidden">
-      <h2>問題2</h2>
-      <p>赤門についての正式名称を答えよ</p>
-      <input type="text" id="answer2" placeholder="ここに入力">
-      <button onclick="checkAnswer(2)">答える</button>
-      <p id="result2" class="result"></p>
-      <button id="finishBtn" class="hidden" onclick="showComplete()">完答！</button>
-    </div>
-
-    <!-- 完答メッセージ（最初は隠す） -->
-    <div id="complete" class="hidden">
-      <h2>🎉 完答おめでとう！ 🎉</h2>
-      <p>次の場所へ進もう！</p>
-    </div>
-
-  </div>
-
+  <input type="text" id="answer" placeholder="ここに入力">
+  <button onclick="checkAnswer()" id="btn">答える</button>
+  <p id="result"></p>
 
   <!-- 正解後に表示されるエリア -->
   <div id="extra" class="hidden-content">
@@ -131,41 +110,30 @@ body::before {
 </style>
     
 <script>
-   function checkAnswer(quizNumber) {
-      const answer = document.getElementById("answer" + quizNumber).value.trim();
-      const result = document.getElementById("result" + quizNumber);
+  function checkAnswer() {
+    const input = document.getElementById("answer").value.trim();
+    const result = document.getElementById("result");
+    const extra = document.getElementById("extra");
 
-      // 正解一覧
-      const correctAnswers = {
-        1: ["北", "きた"],       // 問題1の答え
-        2: ["旧正門", "赤門"]   // 問題2の答え
-      };
+    // 正解候補
+    const correctAnswers = ["", ""];
 
-      if (correctAnswers[quizNumber].includes(answer)) {
-        result.textContent = "正解！🎉";
-        if (quizNumber === 1) {
-          document.getElementById("nextBtn1").classList.remove("hidden");
-          document.getElementById("nextBtn1").classList.add("show");
-        } else if (quizNumber === 2) {
-          document.getElementById("finishBtn").classList.remove("hidden");
-          document.getElementById("finishBtn").classList.add("show");
-        }
-      } else {
-        result.textContent = "不正解…もう一度挑戦してね。";
-      }
+    if (correctAnswers.includes(input)) {
+      result.textContent = "正解！🎉";
+      extra.classList.add("show"); // 次のページボタン & 地図をフェードイン
+    } else {
+      result.textContent = "不正解…もう一度挑戦してね。";
     }
+  }
+  
+   document.addEventListener("DOMContentLoaded", () => {
+    const infoBtn = document.getElementById("infoBtn");
+    const infoBubble = document.getElementById("infoBubble");
 
-    function showQuiz(num) {
-      const quiz = document.getElementById("quiz" + num);
-      quiz.classList.remove("hidden");
-      quiz.classList.add("show");
-    }
-
-    function showComplete() {
-      const complete = document.getElementById("complete");
-      complete.classList.remove("hidden");
-      complete.classList.add("show");
-    }
+    infoBtn.addEventListener("click", () => {
+      infoBubble.classList.toggle("show");
+    });
+  });
 </script>
 
   </body>
