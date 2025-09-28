@@ -10,8 +10,8 @@
     <div class="container">
    <h1>問題</h1>
  <div class="quiz-image">
-  <img src="q2.png" alt="クイズ画像" class="q2">
-  <div class="caption"></div>
+  <img src="image (3).png" alt="クイズ画像" class="q2">
+  <div class="caption">次に行く場所のヒントとなる物を、この画像から読み取って答えよ</div>
 </div>
 
   <input type="text" id="answer" placeholder="ここに入力">
@@ -31,7 +31,7 @@
     </div>      
 
      <div class="map-container"> 
-
+<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3257.291312480854!2d139.6740890244296!3d35.27388275224566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60183fee043f8653%3A0x27671e8367c22957!2z56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yS5LiB55uuIOS4iua1t-S6rQ!3m2!1d35.2724919!2d139.67619109999998!4m5!1s0x60183ff19e20d987%3A0xaa5e77ee806ccba0!2z44CSMjM4LTAwMTIg56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yR5LiB55uuIEhFTExPIENZQ0xJTkcsIOODmeOCpOODq-ODvOODoOaoqumgiOizgOS4reWkruKFoQ!3m2!1d35.2753084!2d139.67711269999998!5e0!3m2!1sja!2sjp!4v1759035865891!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
 
@@ -43,7 +43,7 @@
   body {
   margin: 0;
   font-family: sans-serif;
-  background: url("") no-repeat center center / cover;
+  background: url("sht.jpg") no-repeat center center / cover;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -79,7 +79,7 @@ body::before {
     const extra = document.getElementById("extra");
 
     // 正解候補
-    const correctAnswers = ["", ""];
+    const correctAnswers = ["自転車", "じてんしゃ"];
 
     if (correctAnswers.includes(input)) {
       result.textContent = "正解！🎉";
