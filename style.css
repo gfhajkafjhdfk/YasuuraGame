@@ -123,6 +123,24 @@
   transform: translateY(-20px);
   animation: fadeSlideIn 1s forwards;
 }
+.q2 {
+  width: 100%;
+  display: block;
+  border: 2px solid #5a3e2b; /* 画像にも縁取り */
+  border-radius: 6px;
+}
+
+q3 {
+     max-width: 100%;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeSlideIn 1s forwards;
+  width: 100%;
+  display: block;
+  border: 2px solid #5a3e2b; /* 画像にも縁取り */
+  border-radius: 6px;
+}
 
 @keyframes fadeSlideIn {
   to {
@@ -169,12 +187,6 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
-.q2 {
-  width: 100%;
-  display: block;
-  border: 2px solid #5a3e2b; /* 画像にも縁取り */
-  border-radius: 6px;
-}
 
 .caption {
   margin-top: 8px;
