@@ -6,95 +6,150 @@
   <title>クイズ3</title>
   <link rel="stylesheet" href="style.css">
 </head>
-  <body>
-    <div class="container">
-  <h1>問題1</h1>
-  <p class="q1">地蔵尊付近のトンネルについて、標識が示す方角を答えよ</p>
+<body>
+  <div class="container">
+    <div id="quiz-1" class="quiz-area show">
+      <h1>問題1</h1>
+      <p class="q1">地蔵尊付近のトンネルについて、標識が示す方角を答えよ</p>
+      <input type="text" id="answer1" placeholder="ここに入力">
+      <button onclick="checkAnswer1()" id="btn1">答える</button>
+      <p id="result1"></p>
+    </div>
 
-  <input type="text" id="answer" placeholder="ここに入力">
-  <button onclick="checkAnswer()" id="btn">答える</button>
-  <p id="result"></p>
+    <div id="quiz-2" class="quiz-area hidden">
+      <h1>問題2</h1>
+      <p class="q2">ここに問題2の文章を入力してください</p>
+      <input type="text" id="answer2" placeholder="ここに入力">
+      <button onclick="checkAnswer2()" id="btn2">答える</button>
+      <p id="result2"></p>
+    </div>
 
-  <!-- 正解後に表示されるエリア -->
-  <div id="extra" class="hidden-content">
-    <a href="Nearjizo.html" id="nextBtn">メッセージ</a>
+    <div id="extra" class="hidden">
+      <a href="Nearjizo.html" id="nextBtn">メッセージ</a>
       <button id="infoBtn">についての豆知識</button>
-    
-<div id="infoBubble" class="info-bubble">
-      <img src="" alt="" class="info-img">
-      <p>
-        説明文
-      </p>
-    </div>      
+      
+      <div id="infoBubble" class="info-bubble">
+        <img src="" alt="" class="info-img">
+        <p>説明文</p>
+      </div>
 
-     <div class="map-container"> 
-       
-<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1804.78518437015!2d139.67358487473714!
-  3d35.27274322795812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60183f465b553e67%3A0xf2ae32f0
-  da7175d3!2z56We5aWI5bed55yM5qiq6aCI6LOA5biC5rex55Sw5Y-w77yS5LiB55uu77yY77yVIOWcsOiUteWwig!3m2!1d35.272044699999995
-  !2d139.67479!4m5!1s0x60183ff222437a87%3A0x7f1b2c545d6916dd!2z44CSMjM4LTAwMTIg56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rW
-  m55S677yR5LiB55uuIOWlpeWxseiNmA!3m2!1d35.2737006!2d139.67539399999998!5e0!3m2!1sja!2sjp!4v1759029570245!5m2!1sja!2sjp
-  " width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-   </iframe>
-       
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1804.78518437015!2d139.67358487473714!3d35.27274322795812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60183f465b553e67%3A0xf2ae32f0da7175d3!2z56We5aWI5bed55yM5qiq6aCI6LOA5biC5rex55Sw5Y-w77yS5LiB55uu77yY77yVIOWcsOiUteWwig!3m2!1d35.272044699999995!2d139.67479!4m5!1s0x60183ff222437a87%3A0x7f1b2c545d6916dd!2z44CSMjM4LTAwMTIg56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yR5LiB55uuIOWlpeWxseiNmA!3m2!1d35.2737006!2d139.67539399999998!5e0!3m2!1sja!2sjp!4v1759029570245!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </div>
 
-
-</div>
-
-<style> 
-
+<style>
   body {
-  margin: 0;
-  font-family: sans-serif;
-  background: url("") no-repeat center center / cover;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-}
+    margin: 0;
+    font-family: sans-serif;
+    background: url("") no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* コンテンツを中央に配置 */
+  }
 
-/* 背景の上に半透明の黒を被せる */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5); /* 透過黒 */
-  z-index: -1; /* コンテンツより下 */
-}
+  /* 背景の上に半透明の黒を被せる */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5); /* 透過黒 */
+    z-index: -1; /* コンテンツより下 */
+  }
 
-.container {
-  background: rgba(255,255,255,0.85); /* 半透明の白 */
-  padding: 2rem;
-  border-radius: 16px;
-  max-width: 700px;
-  margin: 20px;
-  text-align: center;
-}
+  .container {
+    background: rgba(255,255,255,0.85); /* 半透明の白 */
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 700px;
+    margin: 20px;
+    text-align: center;
+  }
+
+  /* フェードイン・アウトのためのスタイル */
+  .hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 2rem; /* 横のpaddingは維持 */
+    margin: 0;
+    transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
+  }
   
+  .show {
+    opacity: 1;
+    max-height: 1000px; /* 十分な高さを確保 */
+    transition: opacity 0.5s ease-in, max-height 0.5s ease-in;
+  }
+  
+  /* ボタンやリンクのスタイル（任意） */
+  #nextBtn, #infoBtn, button {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+  }
+
+  #infoBtn {
+      background-color: #6c757d;
+  }
 </style>
-    
+  
 <script>
-  function checkAnswer() {
-    const input = document.getElementById("answer").value.trim();
-    const result = document.getElementById("result");
-    const extra = document.getElementById("extra");
+  // 問題1の正解をチェックする関数
+  function checkAnswer1() {
+    // ★★★★★ ここに問題1の正解を入力 ★★★★★
+    const correctAnswers1 = ["南西", "なんせい"]; 
+    const input = document.getElementById("answer1").value.trim();
+    const result = document.getElementById("result1");
+    const quiz2 = document.getElementById("quiz-2");
 
-    // 正解候補
-    const correctAnswers = ["", ""];
-
-    if (correctAnswers.includes(input)) {
-      result.textContent = "正解！🎉";
-      extra.classList.add("show"); // 次のページボタン & 地図をフェードイン
+    if (correctAnswers1.includes(input)) {
+      result.textContent = "正解！🎉 次の問題です。";
+      result.style.color = "green";
+      
+      // 問題2を表示
+      quiz2.classList.add("show");
+      quiz2.classList.remove("hidden");
     } else {
       result.textContent = "不正解…もう一度挑戦してね。";
+      result.style.color = "red";
+    }
+  }
+
+  // 問題2の正解をチェックする関数
+  function checkAnswer2() {
+    // ★★★★★ ここに問題2の正解を入力 ★★★★★
+    const correctAnswers2 = ["問題2の正解", "答え"]; 
+    const input = document.getElementById("answer2").value.trim();
+    const result = document.getElementById("result2");
+    const extra = document.getElementById("extra");
+
+    if (correctAnswers2.includes(input)) {
+      result.textContent = "正解！🎉 おめでとうございます！";
+      result.style.color = "green";
+      
+      // 地図やボタンなどの追加情報を表示
+      extra.classList.add("show");
+      extra.classList.remove("hidden");
+    } else {
+      result.textContent = "不正解…もう一度挑戦してね。";
+      result.style.color = "red";
     }
   }
   
-   document.addEventListener("DOMContentLoaded", () => {
+  // 豆知識の表示・非表示（これは元のまま）
+  document.addEventListener("DOMContentLoaded", () => {
     const infoBtn = document.getElementById("infoBtn");
     const infoBubble = document.getElementById("infoBubble");
 
@@ -104,6 +159,5 @@ body::before {
   });
 </script>
 
-  </body>
-  
+</body>
 </html>
