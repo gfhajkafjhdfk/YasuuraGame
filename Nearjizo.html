@@ -15,7 +15,7 @@
   body {
     margin: 0;
     font-family: sans-serif;
-    background: url("") no-repeat center center / cover;
+    background: url("hyoushiki.jpg") no-repeat center center / cover;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -239,7 +239,7 @@
         <p class="caption">ここに画像の説明やキャプション</p>
       </div>
 
-      <p class="q2">ここに問題2の文章を入力してください</p>
+      <p class="q2">標識から、進むべき距離を求めなさい。単位も忘れずに</p>
       <input type="text" id="answer2" placeholder="ここに入力">
       <button onclick="checkAnswer2()" id="btn2">答える</button>
       <p id="result2"></p>
@@ -265,7 +265,7 @@
   // 問題1の正解をチェックする関数
   function checkAnswer1() {
     // ★★★★★ ここに問題1の正解を入力 ★★★★★
-    const correctAnswers1 = ["南西", "なんせい"]; 
+    const correctAnswers1 = ["北東", "北東"]; 
     const input = document.getElementById("answer1").value.trim();
     const result = document.getElementById("result1");
     const quiz1 = document.getElementById("quiz-1");
@@ -287,7 +287,7 @@
   // 問題2の正解をチェックする関数
   function checkAnswer2() {
     // ★★★★★ ここに問題2の正解を入力 ★★★★★
-    const correctAnswers2 = ["問題2の正解", "答え"]; 
+    const correctAnswers2 = ["190m", "190m"]; 
     const input = document.getElementById("answer2").value.trim();
     const result = document.getElementById("result2");
     const extra = document.getElementById("extra");
