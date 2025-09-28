@@ -155,3 +155,34 @@
   border-radius: 8px;
   margin-bottom: 10px;
 }
+
+.quiz-image {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 10px;
+  border: 8px solid #8b5e3c; /* 木枠風の色 */
+  border-radius: 12px;
+  background: #fdf6e3; /* 古紙風の色 */
+  background-image: url("parchment-texture.jpg"); /* 古紙の背景テクスチャ（任意） */
+  background-size: cover;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.q2 {
+  width: 100%;
+  display: block;
+  border: 2px solid #5a3e2b; /* 画像にも縁取り */
+  border-radius: 6px;
+}
+
+.caption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #3b2a18;
+  font-family: "serif";
+  text-shadow: 1px 1px 0 #f5e6c4;
+}
+
