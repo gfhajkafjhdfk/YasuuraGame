@@ -103,7 +103,7 @@
       position: relative;
       width: 100%;
       padding-bottom: 56.25%; /* アスペクト比 16:9 */
-      height: 0;
+      height: 120px;
       overflow: hidden;
       border-radius: 12px;
     }
