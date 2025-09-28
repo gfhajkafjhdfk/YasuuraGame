@@ -18,7 +18,7 @@
 
     <div id="quiz-2" class="quiz-area hidden">
       <h1>問題2</h1>
-      <p class="q2"></p>
+      <p class="q2">標識から、進むべき距離を求めよ。単位も忘れずに</p>
       <input type="text" id="answer2" placeholder="ここに入力">
       <button onclick="checkAnswer2()" id="btn2">答える</button>
       <p id="result2"></p>
@@ -109,7 +109,7 @@
   // 問題1の正解をチェックする関数
   function checkAnswer1() {
     // ★★★★★ ここに問題1の正解を入力 ★★★★★
-    const correctAnswers1 = ["南西", "なんせい"]; 
+    const correctAnswers1 = ["北東", "ほくとう"]; 
     const input = document.getElementById("answer1").value.trim();
     const result = document.getElementById("result1");
     const quiz2 = document.getElementById("quiz-2");
@@ -130,7 +130,7 @@
   // 問題2の正解をチェックする関数
   function checkAnswer2() {
     // ★★★★★ ここに問題2の正解を入力 ★★★★★
-    const correctAnswers2 = ["問題2の正解", "答え"]; 
+    const correctAnswers2 = ["190m", ""]; 
     const input = document.getElementById("answer2").value.trim();
     const result = document.getElementById("result2");
     const extra = document.getElementById("extra");
