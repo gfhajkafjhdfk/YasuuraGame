@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クイズ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <h1>問題</h1>
+  <p class="q1">序盤に見た京急のウェブサイトから色が消えている...！？<br>異変を見つけてそれを答えて！！</p>
+ 
+  <!-- 既存の extra 内など適切な場所に挿入 -->
+<a href="">駅の詳細を見る</a>
 
+  <input type="text" id="answer" placeholder="ここに入力">
+  <button onclick="checkAnswer()" id="btn">答える</button>
+  <p id="result"></p>
+
+  <!-- 正解後に表示されるエリア -->
+ <div id="extra" class="hidden-content">
+  <a href="Akamon.html" id="nextBtn">さあ、赤門へGO!</a>
+ <button id="infoBtn">県立大学駅についての豆知識</button>
+    
+       <div id="infoBubble" class="info-bubble">
+      <img src="yasuura.jpg" alt="県立大学" class="info-img">
+      <p>
+        県立大学駅は、もともと昭和５年に「横須賀公郷駅」という名称で開業したんだ。その後も「京浜安浦駅」「京急安浦駅」など、何回かの変更を経て2004年に現在の「県立大学駅」になったんだね。ちなみに、「県立大学」という名称はこの駅の近くにある「神奈川県立健康福祉大学」が前年の2003年に設立されたからことが由来するよ。<br>
+        ※画像は「京急安浦駅」時代に撮影されたもの。この駅舎は2005年に改築されたんだ。
+      </p>
+    </div>   
+   <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1936.8550433056364!2d139.6743941576408!3d35.271455307065786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60183fee951b042d%3A0xecb9389eb5b1d94e!2z56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yS5LiB55uuIOecjOeri-Wkp-WtpumnhQ!3m2!1d35.270299699999995!2d139.676624!4m5!1s0x60183ff209a7b1ef%3A0x22b4f7e4a52f6f7b!2z44CSMjM4LTAwMTIg56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yR5LiB55uuIOi1pOmWgA!3m2!1d35.2724358!2d139.6749841!5e0!3m2!1sja!2sjp!4v1759020688532!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+  
+</div>
+
+<style>
+  
+  body {
+  margin: 0;
+  font-family: sans-serif;
+  background: url("kenritsu.jpg") no-repeat center center / cover;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 背景の上に半透明の黒を被せる */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* 透過黒 */
+  z-index: -1; /* コンテンツより下 */
+}
+
+.container {
+  background: rgba(255,255,255,0.85); /* 半透明の白 */
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 700px;
+  margin: 20px;
+}
+
+  
+</style>
+  
+<script>
+  function checkAnswer() {
+    const input = document.getElementById("answer").value.trim();
+    const result = document.getElementById("result");
+    const extra = document.getElementById("extra");
+
+    // 正解候補
+    const correctAnswers = ["赤門", "あかもん"];
+
+    if (correctAnswers.includes(input)) {
+      result.textContent = "正解！🎉";
+      extra.classList.add("show"); // 次のページボタン & 地図をフェードイン
+    } else {
+      result.textContent = "不正解…もう一度挑戦してね。";
+    }
+  }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+    const infoBtn = document.getElementById("infoBtn");
+    const infoBubble = document.getElementById("infoBubble");
+
+    infoBtn.addEventListener("click", () => {
+      infoBubble.classList.toggle("show");
+    });
+  });
+  
+</script>
+</body>
+</html>
