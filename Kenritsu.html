@@ -18,11 +18,17 @@
   <!-- 正解後に表示されるエリア -->
  <div id="extra" class="hidden-content">
   <a href="Akamon.html" id="nextBtn">さあ、赤門へGO!</a>
-
+ <button id="infoBtn">県立大学駅についての豆知識</button>
     <div class="map-container">
     <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1936.8550433056364!2d139.6743941576408!3d35.271455307065786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60183fee951b042d%3A0xecb9389eb5b1d94e!2z56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yS5LiB55uuIOecjOeri-Wkp-WtpumnhQ!3m2!1d35.270299699999995!2d139.676624!4m5!1s0x60183ff209a7b1ef%3A0x22b4f7e4a52f6f7b!2z44CSMjM4LTAwMTIg56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yR5LiB55uuIOi1pOmWgA!3m2!1d35.2724358!2d139.6749841!5e0!3m2!1sja!2sjp!4v1759020688532!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
+   <div id="infoBubble" class="info-bubble">
+      <img src=".jpg" alt="県立大学" class="info-img">
+      <p>
+        県立大学
+      </p>
+    </div>      
 </div>
 
 <style>
@@ -76,6 +82,16 @@ body::before {
       result.textContent = "不正解…もう一度挑戦してね。";
     }
   }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+    const infoBtn = document.getElementById("infoBtn");
+    const infoBubble = document.getElementById("infoBubble");
+
+    infoBtn.addEventListener("click", () => {
+      infoBubble.classList.toggle("show");
+    });
+  });
+  
 </script>
 </body>
 </html>
