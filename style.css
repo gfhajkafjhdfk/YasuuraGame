@@ -101,34 +101,37 @@
       border: 0;
     }
 
- .info-bubble {
-    position: relative;
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
-    max-width: 500px;
-    text-align: left;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 1s ease, transform 1s ease;
-    display: none; /* 初期非表示 */
-  }
-  .info-bubble.show {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .info-bubble::before {
-    content: "";
-    position: absolute;
-    top: -20px;
-    left: 30px;
-    border: 10px solid transparent;
-    border-bottom: 20px solid #fff;
-  }
-  .info-img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
+.info-bubble {
+  position: absolute;
+  top: 20px;   /* マップの上からの位置 */
+  left: 20px;  /* マップの左からの位置 */
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 300px;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  display: none; /* 初期非表示 */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 10;
+}
+.info-bubble.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+.info-bubble::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: 30px;
+  border: 10px solid transparent;
+  border-bottom: 20px solid #fff;
+}
+.info-img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
