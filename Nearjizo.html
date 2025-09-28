@@ -4,11 +4,226 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>クイズ3</title>
-  <link rel="stylesheet" href="style.css">
+<style>
+  /* ▼▼▼ 提供されたCSSをここに統合 ▼▼▼ */
+  @charset "UTF-8";
+
+  html {
+    font-size: 100%;
+  }
+  
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    background: url("") no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: -1;
+  }
+
+  .container {
+    background: rgba(255,255,255,0.9);
+    padding: 2rem;
+    border-radius: 16px;
+    max-width: 700px;
+    margin: 20px;
+    text-align: center;
+  }
+
+  /* --- 汎用的な入力欄とボタンのスタイル --- */
+  #answer1, #answer2 {
+    display: block;
+    margin: 20px auto;
+    padding: 0.5rem;
+    font-size: 1rem;
+    width: 200px;
+  }
+
+  #btn1, #btn2 {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 200px;
+    margin: 30px auto;
+    padding: 1rem 4rem;
+    font-weight: bold;
+    border: 2px solid #27acd9;
+    color: #27acd9;
+    border-radius: 100vh;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  #btn1:hover, #btn2:hover {
+    color: #fff;
+    background: #27acd9;
+  }
+
+  /* --- クイズエリアの表示/非表示アニメーション --- */
+  .quiz-area {
+    transition: opacity 0.8s ease, transform 0.8s ease, max-height 0.8s ease;
+    overflow: hidden;
+    max-height: 1000px; /* 表示時の高さ */
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .quiz-area.hidden {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
+
+  /* --- 正解後に表示する要素（次ボタン & 地図） --- */
+  .hidden-content {
+    opacity: 0;
+    transform: translateY(50px);
+    pointer-events: none;
+    transition: opacity 1s ease, transform 1s ease;
+    margin: 30px auto;
+    max-width: 800px;
+  }
+  .hidden-content.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* --- 各種ボタンのデザイン（提供されたものをそのまま使用） --- */
+  #nextBtn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 2px solid #28a745;
+    color: #28a745;
+    border-radius: 100vh;
+    font-weight: bold;
+    text-decoration: none;
+    margin-bottom: 30px;
+    transition: 0.5s;
+  }
+  #nextBtn:hover {
+    background: #28a745;
+    color: #fff;
+  }
+  #infoBtn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 2px solid #ff6347;
+    color: #ff6347;
+    border-radius: 100vh;
+    font-weight: bold;
+    background: none;
+    cursor: pointer;
+    margin-bottom: 30px;
+    transition: 0.5s;
+  }
+  #infoBtn:hover {
+    background: #ff6347;
+    color: #fff;
+  }
+  #stationLinkBtn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: linear-gradient(135deg, #0077cc, #00bbff);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  #stationLinkBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  }
+
+  /* --- レスポンシブ対応のGoogle Map --- */
+  .map-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* アスペクト比 16:9 */
+    height: 0; /* padding-bottomで高さを制御するため0に */
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .map-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* --- 豆知識バブル --- */
+  .info-bubble {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  }
+  .info-bubble.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .info-img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  /* --- クイズの画像スタイル --- */
+  .quiz-image {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 10px;
+    border: 8px solid #8b5e3c;
+    border-radius: 12px;
+    background: #fdf6e3;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  }
+  .q-img {
+    width: 100%;
+    display: block;
+    border: 2px solid #5a3e2b;
+    border-radius: 6px;
+  }
+  .caption {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #3b2a18;
+    font-family: "serif";
+    text-shadow: 1px 1px 0 #f5e6c4;
+  }
+  /* ▲▲▲ ここまでが提供されたCSS ▲▲▲ */
+</style>
 </head>
 <body>
   <div class="container">
-    <div id="quiz-1" class="quiz-area show">
+    <div id="quiz-1" class="quiz-area">
       <h1>問題1</h1>
       <p class="q1">地蔵尊付近のトンネルについて、標識が示す方角を答えよ</p>
       <input type="text" id="answer1" placeholder="ここに入力">
@@ -18,108 +233,50 @@
 
     <div id="quiz-2" class="quiz-area hidden">
       <h1>問題2</h1>
-      <p class="q2">標識から、進むべき距離を求めよ。単位も忘れずに</p>
+      
+      <div class="quiz-image">
+        <img src="your-image.jpg" alt="問題2の画像" class="q-img">
+        <p class="caption">ここに画像の説明やキャプション</p>
+      </div>
+
+      <p class="q2">ここに問題2の文章を入力してください</p>
       <input type="text" id="answer2" placeholder="ここに入力">
       <button onclick="checkAnswer2()" id="btn2">答える</button>
       <p id="result2"></p>
     </div>
 
-    <div id="extra" class="hidden">
+    <div id="extra" class="hidden-content">
       <a href="Nearjizo.html" id="nextBtn">メッセージ</a>
       <button id="infoBtn">についての豆知識</button>
+      <a href="#" id="stationLinkBtn">駅へのリンク</a>
       
       <div id="infoBubble" class="info-bubble">
         <img src="" alt="" class="info-img">
-        <p>説明文</p>
+        <p>ここに豆知識の説明文が入ります。</p>
       </div>
 
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d1804.78518437015!2d139.67358487473714!3d35.27274322795812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x60183f465b553e67%3A0xf2ae32f0da7175d3!2z56We5aWI5bed55yM5qiq6aCI6LOA5biC5rex55Sw5Y-w77yS5LiB55uu77yY77yVIOWcsOiUteWwig!3m2!1d35.272044699999995!2d139.67479!4m5!1s0x60183ff222437a87%3A0x7f1b2c545d6916dd!2z44CSMjM4LTAwMTIg56We5aWI5bed55yM5qiq6aCI6LOA5biC5a6J5rWm55S677yR5LiB55uuIOWlpeWxseiNmA!3m2!1d35.2737006!2d139.67539399999998!5e0!3m2!1sja!2sjp!4v1759029570245!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.261895034631!2d139.6732189762111!3d35.27274322795812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60183f465b553e67%3A0xf2ae32f0da7175d3!2z5a6J5Y-w6KaL5ZyS6aCI!5e0!3m2!1sja!2sjp!4v1695880000000!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </div>
-
-<style>
-  body {
-    margin: 0;
-    font-family: sans-serif;
-    background: url("hyoushiki.jpg") no-repeat center center / cover;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center; /* コンテンツを中央に配置 */
-  }
-
-  /* 背景の上に半透明の黒を被せる */
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5); /* 透過黒 */
-    z-index: -1; /* コンテンツより下 */
-  }
-
-  .container {
-    background: rgba(255,255,255,0.85); /* 半透明の白 */
-    padding: 2rem;
-    border-radius: 16px;
-    max-width: 700px;
-    margin: 20px;
-    text-align: center;
-  }
-
-  /* フェードイン・アウトのためのスタイル */
-  .hidden {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 2rem; /* 横のpaddingは維持 */
-    margin: 0;
-    transition: opacity 0.5s ease-out, max-height 0.5s ease-out;
-  }
-  
-  .show {
-    opacity: 1;
-    max-height: 1000px; /* 十分な高さを確保 */
-    transition: opacity 0.5s ease-in, max-height 0.5s ease-in;
-  }
-  
-  /* ボタンやリンクのスタイル（任意） */
-  #nextBtn, #infoBtn, button {
-      display: inline-block;
-      margin: 10px 5px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      cursor: pointer;
-  }
-
-  #infoBtn {
-      background-color: #6c757d;
-  }
-</style>
   
 <script>
   // 問題1の正解をチェックする関数
   function checkAnswer1() {
     // ★★★★★ ここに問題1の正解を入力 ★★★★★
-    const correctAnswers1 = ["北東", "ほくとう"]; 
+    const correctAnswers1 = ["南西", "なんせい"]; 
     const input = document.getElementById("answer1").value.trim();
     const result = document.getElementById("result1");
+    const quiz1 = document.getElementById("quiz-1");
     const quiz2 = document.getElementById("quiz-2");
 
     if (correctAnswers1.includes(input)) {
       result.textContent = "正解！🎉 次の問題です。";
       result.style.color = "green";
       
-      // 問題2を表示
-      quiz2.classList.add("show");
+      // 問題1を非表示にし、問題2を表示
+      quiz1.classList.add("hidden");
       quiz2.classList.remove("hidden");
     } else {
       result.textContent = "不正解…もう一度挑戦してね。";
@@ -130,7 +287,7 @@
   // 問題2の正解をチェックする関数
   function checkAnswer2() {
     // ★★★★★ ここに問題2の正解を入力 ★★★★★
-    const correctAnswers2 = ["190m", ""]; 
+    const correctAnswers2 = ["問題2の正解", "答え"]; 
     const input = document.getElementById("answer2").value.trim();
     const result = document.getElementById("result2");
     const extra = document.getElementById("extra");
@@ -141,14 +298,13 @@
       
       // 地図やボタンなどの追加情報を表示
       extra.classList.add("show");
-      extra.classList.remove("hidden");
     } else {
       result.textContent = "不正解…もう一度挑戦してね。";
       result.style.color = "red";
     }
   }
   
-  // 豆知識の表示・非表示（これは元のまま）
+  // 豆知識の表示・非表示
   document.addEventListener("DOMContentLoaded", () => {
     const infoBtn = document.getElementById("infoBtn");
     const infoBubble = document.getElementById("infoBubble");
