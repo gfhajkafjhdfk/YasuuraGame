@@ -44,7 +44,7 @@
   font-size: 0.8rem;          /* 文字サイズも少し小さく */
   font-weight: bold;
   border: 2px solid #27acd9;
-  color: White;
+  color: Black;
   border-radius: 9999px;      /* pill型 */
   white-space: nowrap;        /* 強制改行なし */
   transition: 0.3s;
@@ -62,10 +62,10 @@
       text-decoration: none;
       width: 80px;
       margin: 10px auto;
-      padding: 0.5rem 2rem;
+      padding: 0.25rem 0.75rem;
       font-weight: bold;
       border: 2px solid #27acd9;
-      color: White;
+      color: Black;
       border-radius: 100vh;
       transition: 0.5s;
     }
