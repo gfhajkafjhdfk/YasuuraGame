@@ -35,24 +35,24 @@
       background: #27acd9;
     }
 
-    #hintbtn {
-      display: block;
-      text-align: center;
-      text-decoration: none;
-      width: 80px;
-      margin: 10px auto;
-      padding: 0.5rem 2rem;
-      font-weight: bold;
-      border: 2px solid #27acd9;
-      color: #FFFF00;
-      border-radius: 100vh;
-      transition: 0.5s;
-    }
+   #hintbtn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;   /* 小さめ余白 */
+  font-size: 0.8rem;          /* 文字サイズも少し小さく */
+  font-weight: bold;
+  border: 2px solid #27acd9;
+  color: #FFFF00;
+  border-radius: 9999px;      /* pill型 */
+  white-space: nowrap;        /* 強制改行なし */
+  transition: 0.3s;
+}
 
-    #hintbtn:hover {
-      color: #fff;
-      background: #27acd9;
-    }
+#hintbtn:hover {
+  color: #fff;
+  background: #27acd9;
+}
 
     #anserbtn {
       display: block;
