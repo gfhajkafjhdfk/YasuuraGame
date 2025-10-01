@@ -75,6 +75,20 @@
       background: #FFFFCC;
     } 
 
+/*ここからヒントや答え（１）のアニメーション*/
+
+.hint1, .anser1 {
+  max-height: 0;             /* 初期は非表示 */
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+.hint1.show, .anser1.show {
+  max-height: 200px;          /* 十分に高さを確保 */
+  opacity: 1;
+}
+
     /* ▼正解後に表示する要素（次ボタン & 地図） */
     .hidden-content {
       opacity: 0;
