@@ -13,11 +13,14 @@
  
   <!-- 既存の extra 内など適切な場所に挿入 -->
 <a href="https://www.keikyu.co.jp/ride/kakueki/KK60.html" target="_blank" id="stationLinkBtn">駅の詳細を見る</a>
+  
 <div>
-  <h3>ヒント</h3>
+  <button onclick="checkhint()" id="hintbtn">ヒント</button>
   <div class="hint1">色のあるということは…。色の文字がある場所？</div>
+  <button onclick="checkanser()" id ="anserbtn">答え</button>
   <div class="anser1">駅の概要から横須賀の中で色の文字を探すと”赤門”という文字が出てくるのでそれが答えになる<br>答え＝赤門</div>
 </div>
+  
   <input type="text" id="answer" placeholder="ここに入力">
   <button onclick="checkAnswer()" id="btn">答える</button>
   <p id="result"></p>
