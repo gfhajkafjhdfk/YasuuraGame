@@ -38,12 +38,13 @@
    #hintbtn {
   display: inline-block;
   text-align: center;
+  background: #FFFF00;
   text-decoration: none;
   padding: 0.25rem 0.75rem;   /* 小さめ余白 */
   font-size: 0.8rem;          /* 文字サイズも少し小さく */
   font-weight: bold;
   border: 2px solid #27acd9;
-  color: #FFFF00;
+  color: White;
   border-radius: 9999px;      /* pill型 */
   white-space: nowrap;        /* 強制改行なし */
   transition: 0.3s;
@@ -57,13 +58,14 @@
     #anserbtn {
       display: block;
       text-align: center;
+        background: #FFFF00;
       text-decoration: none;
       width: 80px;
       margin: 10px auto;
       padding: 0.5rem 2rem;
       font-weight: bold;
       border: 2px solid #27acd9;
-      color: #FFFF00;
+      color: White;
       border-radius: 100vh;
       transition: 0.5s;
     }
