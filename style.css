@@ -78,14 +78,14 @@
 /*ここからヒントや答え（１）のアニメーション*/
 
 .hint1, .anser1 {
-  max-height: 0;             /* 初期は非表示 */
+  max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
   opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 .hint1.show, .anser1.show {
-  max-height: 200px;          /* 十分に高さを確保 */
+  max-height: 200px; /* 必要に応じて調整 */
   opacity: 1;
 }
 
