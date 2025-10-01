@@ -51,8 +51,8 @@
 }
 
 #hintbtn:hover {
-  color: #fff;
-  background: #27acd9;
+  color: Black;
+  background: #FFFFCC;
 }
 
     #anserbtn {
@@ -71,8 +71,8 @@
     }
 
     #anserbtn:hover {
-      color: #fff;
-      background: #27acd9;
+      color: Black;
+      background: #FFFFCC;
     } 
 
     /* ▼正解後に表示する要素（次ボタン & 地図） */
