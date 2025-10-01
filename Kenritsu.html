@@ -96,6 +96,16 @@ body::before {
       result.textContent = "不正解…もう一度挑戦してね。";
     }
   }
+
+  function checkHint() {
+  const hint = document.querySelector('.hint1');
+  hint.classList.toggle('show');
+}
+
+function checkAnswer() {
+  const answer = document.querySelector('.anser1');
+  answer.classList.toggle('show');
+}
   
     document.addEventListener("DOMContentLoaded", () => {
     const infoBtn = document.getElementById("infoBtn");
