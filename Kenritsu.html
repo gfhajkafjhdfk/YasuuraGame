@@ -18,6 +18,7 @@
 <div>
   <button onclick="checkhint()" id="hintbtn">ヒント</button>
   <div class="hint1">色のあるということは…。色の文字がある場所？</div>
+  <br>
   <button onclick="checkanser()" id ="anserbtn">答え</button>
   <div class="anser1">駅の概要から横須賀の中で色の文字を探すと”赤門”という文字が出てくるのでそれが答えになる<br>答え＝赤門</div>
 </div>
@@ -86,6 +87,17 @@ body::before {
     const result = document.getElementById("result");
     const extra = document.getElementById("extra");
 
+
+    function checkHint() {
+  const hint = document.querySelector('.hint1');
+  hint.classList.toggle('show');
+}
+
+function checkAnswer() {
+  const answer = document.querySelector('.anser1');
+  answer.classList.toggle('show');
+}
+    
     // 正解候補
     const correctAnswers = ["赤門", "あかもん"];
 
@@ -96,16 +108,6 @@ body::before {
       result.textContent = "不正解…もう一度挑戦してね。";
     }
   }
-
-  function checkHint() {
-  const hint = document.querySelector('.hint1');
-  hint.classList.toggle('show');
-}
-
-function checkAnswer() {
-  const answer = document.querySelector('.anser1');
-  answer.classList.toggle('show');
-}
   
     document.addEventListener("DOMContentLoaded", () => {
     const infoBtn = document.getElementById("infoBtn");
