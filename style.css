@@ -43,7 +43,7 @@
   padding: 0.25rem 0.75rem;   /* 小さめ余白 */
   font-size: 0.8rem;          /* 文字サイズも少し小さく */
   font-weight: bold;
-  border: 2px solid #27acd9;
+  border: 2px solid Black;
   color: Black;
   border-radius: 9999px;      /* pill型 */
   white-space: nowrap;        /* 強制改行なし */
@@ -63,7 +63,7 @@
   padding: 0.25rem 0.75rem;   /* 小さめ余白 */
   font-size: 0.8rem;          /* 文字サイズも少し小さく */
   font-weight: bold;
-  border: 2px solid #27acd9;
+  border: 2px solid Black;
   color: Black;
   border-radius: 9999px;      /* pill型 */
   white-space: nowrap;        /* 強制改行なし */
