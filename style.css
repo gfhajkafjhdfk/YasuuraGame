@@ -35,6 +35,42 @@
       background: #27acd9;
     }
 
+    #hintbtn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      width: 80px;
+      margin: 30px auto;
+      padding: 1rem 4rem;
+      font-weight: bold;
+      border: 2px solid #27acd9;
+      color: yellow;
+      border-radius: 100vh;
+      transition: 0.5s;
+    }
+
+    #hintbtn:hover {
+        
+    }
+
+    #anserbtn {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      width: 80px;
+      margin: 30px auto;
+      padding: 1rem 4rem;
+      font-weight: bold;
+      border: 2px solid #27acd9;
+      color: yellow;
+      border-radius: 100vh;
+      transition: 0.5s;
+    }
+
+    #ansrrbtn:hover {
+        
+    } 
+
     /* ▼正解後に表示する要素（次ボタン & 地図） */
     .hidden-content {
       opacity: 0;
