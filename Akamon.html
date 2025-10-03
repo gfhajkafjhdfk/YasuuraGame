@@ -90,6 +90,16 @@ body::before {
 </style>
     
 <script>
+
+  function checkhint() {
+  const hint = document.querySelector('.hint1');
+  hint.classList.toggle('show');
+}
+
+function checkanser() {
+  const answer = document.querySelector('.anser1');
+  answer.classList.toggle('show');
+}
   function checkAnswer() {
     const input = document.getElementById("answer").value.trim();
     const result = document.getElementById("result");
