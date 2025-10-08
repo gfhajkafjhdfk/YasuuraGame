@@ -11,8 +11,19 @@
   <h1>問題</h1>
  <div class="quiz-image">
   <img src="humikiri.png" alt="クイズ画像" class="q2">
-  <div class="caption">この画像から推測できる場所を答えよ。<br>Aが１、Bが２という風に考えれば道は開けるだろう</div>
+  <div class="caption">この画像から運命が交差できる場所を答えよ。</div>
 </div>
+
+<br><br>
+  
+<div>
+  <button onclick="checkhint()" id="hintbtn">ヒント</button>
+  <div class="hint1">Aが１、Bが２という風に考えれば道は開けるだろう。</div>
+  <br>
+  <button onclick="checkanser()" id ="anserbtn">答え</button>
+  <div class="anser1">A=1,B=2と考えると、数字が縦読みでTrainとなる。さらに、線は道を示している。よって、線路と道の交差している部分、それが”踏切”となるので答えは”踏切”<br>答え＝踏切</div>
+</div>
+      
   <input type="text" id="answer" placeholder="ここに入力">
   <button onclick="checkAnswer()" id="btn">答える</button>
   <p id="result"></p>
