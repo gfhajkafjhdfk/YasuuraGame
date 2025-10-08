@@ -256,6 +256,16 @@
   </div>
   
 <script>
+function checkhint() {
+  const hint = document.querySelector('.hint1');
+  hint.classList.toggle('show');
+}
+
+function checkanser() {
+  const answer = document.querySelector('.anser1');
+  answer.classList.toggle('show');
+}
+  
   // 問題1の正解をチェックする関数
   function checkAnswer1() {
     // ★★★★★ ここに問題1の正解を入力 ★★★★★
