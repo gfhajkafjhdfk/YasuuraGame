@@ -43,6 +43,85 @@
     text-align: center;
   }
 
+  #anserbtn1 {
+     display: inline-block;
+  text-align: center;
+  background: #FFFF00;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;   /* 小さめ余白 */
+  font-size: 0.8rem;          /* 文字サイズも少し小さく */
+  font-weight: bold;
+  border: 2px solid Black;
+  color: Black;
+  border-radius: 9999px;      /* pill型 */
+  white-space: nowrap;        /* 強制改行なし */
+  transition: 0.3s;
+    }
+
+    #anserbtn1:hover {
+      color: Black;
+      background: #FFFFCC;
+    } 
+
+/*ここからヒントや答え（１）のアニメーション*/
+
+.hint1, .anser1 {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.hint1.show, .anser1.show {
+  max-height: 200px; /* 必要に応じて調整 */
+  opacity: 1;
+}
+
+  
+#anserbtn2 {
+     display: inline-block;
+  text-align: center;
+  background: #FFFF00;
+  text-decoration: none;
+  padding: 0.25rem 0.75rem;   /* 小さめ余白 */
+  font-size: 0.8rem;          /* 文字サイズも少し小さく */
+  font-weight: bold;
+  border: 2px solid Black;
+  color: Black;
+  border-radius: 9999px;      /* pill型 */
+  white-space: nowrap;        /* 強制改行なし */
+  transition: 0.3s;
+    }
+
+    #anserbtn2:hover {
+      color: Black;
+      background: #FFFFCC;
+    } 
+
+/*ここからヒントや答え（１）のアニメーション*/
+
+.hint2, .anser2 {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+.hint2.show, .anser2.show {
+  max-height: 200px; /* 必要に応じて調整 */
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+  
+
+
   /* --- 汎用的な入力欄とボタンのスタイル --- */
   #answer1, #answer2 {
     display: block;
