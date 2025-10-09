@@ -220,7 +220,7 @@
   }
   /* ▲▲▲ ここまでが提供されたCSS ▲▲▲ */
 </style>
-  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
   <div class="container">
@@ -291,6 +291,7 @@ function checkanser1() {
   const answer1 = document.querySelector('.anser1');
   answer1.classList.toggle('show');
 }
+  
 
 function checkhint2() {
   const hint2 = document.querySelector('.hint2');
@@ -306,7 +307,7 @@ function checkanser2() {
   // 問題1の正解をチェックする関数
   function checkAnswer1() {
     // ★★★★★ ここに問題1の正解を入力 ★★★★★
-    const correctAnswers1 = ["北東", "北東"]; 
+    const correctAnswers1 = ["北東", "ほくとう"]; 
     const input = document.getElementById("answer1").value.trim();
     const result = document.getElementById("result1");
     const quiz1 = document.getElementById("quiz-1");
