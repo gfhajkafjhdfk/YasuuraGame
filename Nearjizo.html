@@ -220,6 +220,7 @@
   }
   /* ▲▲▲ ここまでが提供されたCSS ▲▲▲ */
 </style>
+  <link href="style.css" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -230,10 +231,10 @@
 <br><br>
   
 <div>
-  <button onclick="checkhint()" id="hintbtn">ヒント</button>
+  <button onclick="checkhint1()" id="hintbtn1">ヒント</button>
   <div class="hint1">いつも絶対注意しなければいけないものに矢印（方角）がかかれている</div>
   <br>
-  <button onclick="checkanser()" id ="anserbtn">答え</button>
+  <button onclick="checkanser1()" id ="anserbtn1">答え</button>
   <div class="anser1">注意しなければいけないもの、それは標識、その標識はなんと北東を向いている。よって答えは”北東”！<br>答え＝北東</div>
 </div>
       
@@ -253,11 +254,11 @@
 <br><br>
   
 <div>
-  <button onclick="checkhint()" id="hintbtn">ヒント</button>
-  <div class="hint1">標識には距離が書かれているのがわかるのはみんなわかるよね？それが答えではない！問題文をよく見よう！＊</div>
+  <button onclick="checkhint2()" id="hintbtn2">ヒント</button>
+  <div class="hint2">標識には距離が書かれているのがわかるのはみんなわかるよね？それが答えではない！問題文をよく見よう！＊</div>
   <br>
-  <button onclick="checkanser()" id ="anserbtn">答え</button>
-  <div class="anser1">（＊例１００）というのが＊は×という意味だから、×１００ということ...。つまり１．９×１００＝１９０、よって答えは１９０m<br>答え＝190m</div>
+  <button onclick="checkanser2()" id ="anserbtn2">答え</button>
+  <div class="anser2">（＊例１００）というのが＊は×という意味だから、×１００ということ...。つまり１．９×１００＝１９０、よって答えは１９０m<br>答え＝190m</div>
 </div>
       
       <input type="text" id="answer2" placeholder="ここに入力">
@@ -281,15 +282,26 @@
   </div>
   
 <script>
-function checkhint() {
-  const hint = document.querySelector('.hint1');
-  hint.classList.toggle('show');
+function checkhint1() {
+  const hint1 = document.querySelector('.hint1');
+  hint1.classList.toggle('show');
 }
 
-function checkanser() {
-  const answer = document.querySelector('.anser1');
-  answer.classList.toggle('show');
+function checkanser1() {
+  const answer1 = document.querySelector('.anser1');
+  answer1.classList.toggle('show');
 }
+
+function checkhint2() {
+  const hint2 = document.querySelector('.hint2');
+  hint2.classList.toggle('show');
+}
+
+function checkanser2() {
+  const answer2 = document.querySelector('.anser2');
+  answer2.classList.toggle('show');
+}
+  
   
   // 問題1の正解をチェックする関数
   function checkAnswer1() {
